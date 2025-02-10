@@ -1,0 +1,19 @@
+/* In your CSS file (or within a <style> tag in your layout) */
+body {
+    background-color: #f0f0f0; /* Example background color */
+}
+
+.wrapper {
+    background-color: #ffffff; /* Example container color */
+}
+
+.title span {
+    font-size: 24px; /* Example title size */
+    font-weight: bold;
+}
+
+.signup-link a {
+    color: #007bff; /* Example link color */
+}
+
+/* Add more CSS rules as needed to match the design */
