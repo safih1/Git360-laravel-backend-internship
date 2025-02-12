@@ -1,35 +1,32 @@
 @extends('layouts.app')
-@section('content')
-    <div class = "container">
 
+@section('content')
+    <div class="container mt-5">
         @include('_message')
-        <div class = "wrapper">
-            <div class = "title">
-                <span>forgot-password</span>
+
+        <div class="wrapper p-4 rounded shadow bg-light mb-4">
+            <div class="title text-center mb-4">
+                <h3>Forgot Password</h3>
             </div>
-            <form action="{{route("forgot-password-post")}}" method="POST">
+
+            <form action="{{ route('forgot-password-post') }}" method="POST">
                 @csrf
 
-                <i>
-                    <input type="email"  name="email"  id="email" placeholder="Email"  required  value={{old('email')}}>   
-
-                </i>
-
-               
-                <div>
-                    <input type="submit" value="Verify">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required value="{{ old('email') }}">
                 </div>
-                <div>
-                  signup-link: <a href="{{route('register')}}">Join Now</a>
+
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Verify</button>
                 </div>
-                <div>
-                    signup-link: <a href="{{route('login')}}">Sign In</a>
-                  </div>
-                <div>
-                    welcome-link: <a href="{{route('home')}}">Home</a>
+
+                <div class="text-center mt-3">
+                    <p>If you don't have an account, <a href="{{ route('register') }}" class="btn btn-link">Join Now</a></p>
+                    <p>Already have an account? <a href="{{ route('login') }}" class="btn btn-link">Sign In</a></p>
+                    <p><a href="{{ route('home') }}" class="btn btn-link">Go to Home</a></p>
                 </div>
             </form>
         </div>
     </div>
-        
 @endsection

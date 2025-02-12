@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
+
 
 //Home
 Route::get('/', [HomeController::class, 'index'])->name('home'); 
@@ -37,3 +39,17 @@ Route::group(['middleware' => 'user'], function () {
 
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+//search
+Route::get('/search', [AdminController::class, 'search'])->name('search');
+
+//view
+Route::get('/view/{id}', [AdminController::class, 'view'])->name('view');
+
+// adduser
+Route::get('/adduser', [AdminController::class, 'adduser'])->name('adduser');
+
+
+// delete
+Route::get('/delete/{id}', [AdminController::class, 'delete'])->name('delete');

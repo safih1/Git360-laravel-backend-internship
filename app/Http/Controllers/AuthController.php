@@ -29,6 +29,7 @@ class AuthController extends Controller
             'is_role' => 'required'
 
         ]);
+        $role = $request->input('role');
 
         $user = new User();
         $user->name = $request->name;
@@ -37,7 +38,9 @@ class AuthController extends Controller
         $user->is_role = $request->is_role;
         $user->remember_token = Str::random(20);
         $user->save();
-
+        if($role == 'admin'){
+            return redirect()->route('admin.dashboard')->with('success', 'user added successfully');
+        }
         return redirect()->route('login')->with('success', 'Registration successful');
     }
 
@@ -55,9 +58,12 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password],true)) {
-            if(Auth::user()->is_role == 1){
+            if (Auth::user()->is_role == 1) {
+               
+                
                 return redirect()->route('admin.dashboard');
             }
+            
 
             else if(Auth::user()->is_role == 0)
             {
